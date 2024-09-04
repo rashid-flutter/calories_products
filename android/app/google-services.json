@@ -1,0 +1,154 @@
+{
+  "project_info": {
+    "project_number": "163004586993",
+    "project_id": "salih-76f22",
+    "storage_bucket": "salih-76f22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163004586993:android:bfc90013d8330c24e60250",
+        "android_client_info": {
+          "package_name": "com.example.edukids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh7seq3YFL8x8NT_LGWx2XfeXfLaw21Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "163004586993-9hkkrgkuplrl543plrtqnsrumh9s82vu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebase"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163004586993:android:ac66180ac17e3aaae60250",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh7seq3YFL8x8NT_LGWx2XfeXfLaw21Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "163004586993-9hkkrgkuplrl543plrtqnsrumh9s82vu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebase"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163004586993:android:707238843acb43aae60250",
+        "android_client_info": {
+          "package_name": "com.example.food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh7seq3YFL8x8NT_LGWx2XfeXfLaw21Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "163004586993-9hkkrgkuplrl543plrtqnsrumh9s82vu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebase"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163004586993:android:cdbadfc849a070aee60250",
+        "android_client_info": {
+          "package_name": "com.example.gimini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh7seq3YFL8x8NT_LGWx2XfeXfLaw21Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163004586993-qvsmbbi1ans0i1u3glgeda8iss2ethma.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "163004586993-9hkkrgkuplrl543plrtqnsrumh9s82vu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
