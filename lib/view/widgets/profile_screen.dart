@@ -12,7 +12,7 @@ class ProfileScreen extends ConsumerWidget {
     final user = ref.watch(authNotifierProvider);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.lightGreen[50],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

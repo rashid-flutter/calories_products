@@ -127,7 +127,7 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                   .toList(),
             ),
           ),
-          drawer: const ProfileScreen(),
+          drawer: const ProfileScreen(), // Replace with MyDrawer() if needed
           body: TabBarView(
             controller: _tabController,
             children: categories.map((category) {
@@ -150,26 +150,47 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              dish.imageUrl != null
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        dish.imageUrl ?? '',
-                                        width: 50.0,
-                                        height: 50.0,
-                                        fit: BoxFit.cover,
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                          return const Icon(
-                                            Icons.broken_image,
-                                            size: 50.0,
-                                            color: Colors.grey,
-                                          );
-                                        },
+                              const SizedBox(width: 10.0),
+
+                              // Display dish name in colored circle
+                              dish.customizationsAvailable ?? false
+                                  ? Container(
+                                      width: 18,
+                                      height: 18,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              width: 1.5, color: Colors.green)),
+                                      child: Center(
+                                        child: Container(
+                                          width: 13,
+                                          height: 13,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(30)),
+                                        ),
                                       ),
                                     )
-                                  : const Icon(Icons.fastfood, size: 50.0),
+                                  : Container(
+                                      width: 18,
+                                      height: 18,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              width: 1.5, color: Colors.red)),
+                                      child: Center(
+                                        child: Container(
+                                          width: 13,
+                                          height: 13,
+                                          decoration: BoxDecoration(
+                                              color: Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(30)),
+                                        ),
+                                      ),
+                                    ),
+
                               const SizedBox(width: 10.0),
+
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,6 +221,27 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                                             fontSize: 12.0,
                                           ),
                                         ),
+                                        dish.imageUrl != null
+                                            ? ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.network(
+                                                  dish.imageUrl ?? '',
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  fit: BoxFit.cover,
+                                                  errorBuilder: (context, error,
+                                                      stackTrace) {
+                                                    return const Icon(
+                                                      Icons.broken_image,
+                                                      size: 50.0,
+                                                      color: Colors.grey,
+                                                    );
+                                                  },
+                                                ),
+                                              )
+                                            : const Icon(Icons.fastfood,
+                                                size: 50.0),
                                       ],
                                     ),
                                     const SizedBox(height: 4.0),
@@ -226,32 +268,49 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                               ),
                             ),
                           const SizedBox(height: 8.0),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.remove_circle_outline),
-                                onPressed: () {
-                                  ref
-                                      .read(cartProvider.notifier)
-                                      .updateQuantity(dishId, dishQuantity - 1);
-                                },
+                          Container(
+                            width: MediaQuery.of(context).size.width * .30,
+                            height: MediaQuery.of(context).size.width * .10,
+                            decoration: BoxDecoration(
+                                color: Colors.lightGreen,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Center(
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      ref
+                                          .read(cartProvider.notifier)
+                                          .updateQuantity(
+                                              dishId, dishQuantity - 1);
+                                    },
+                                  ),
+                                  Text(
+                                    '$dishQuantity',
+                                    style: const TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      ref
+                                          .read(cartProvider.notifier)
+                                          .updateQuantity(
+                                              dishId, dishQuantity + 1);
+                                    },
+                                  ),
+                                ],
                               ),
-                              Text(
-                                '$dishQuantity',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.add_circle_outline),
-                                onPressed: () {
-                                  ref
-                                      .read(cartProvider.notifier)
-                                      .updateQuantity(dishId, dishQuantity + 1);
-                                },
-                              ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
