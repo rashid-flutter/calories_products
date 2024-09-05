@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/controllers/providers/providers.dart';
@@ -25,18 +26,18 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
   @override
   Widget build(BuildContext context) {
     final cartState = ref.watch(cartProvider);
-    final AsyncValue<Products> products = ref.watch(productsProvider);
+    final AsyncValue<ProductModel> products = ref.watch(productsProvider);
 
     return products.when(
       loading: () => Scaffold(
         appBar: AppBar(
-          title: Text('Products'),
+          title: const Text('Products'),
         ),
-        body: Center(child: CircularProgressIndicator()),
+        body: const Center(child: CircularProgressIndicator()),
       ),
       error: (error, stackTrace) => Scaffold(
         appBar: AppBar(
-          title: Text('Products'),
+          title: const Text('Products'),
         ),
         body: Center(child: Text('Error: $error')),
       ),
@@ -50,13 +51,13 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
           appBar: AppBar(
             leading: Builder(
               builder: (context) => IconButton(
-                icon: Icon(Icons.menu),
+                icon: const Icon(Icons.menu),
                 onPressed: () {
                   Scaffold.of(context).openDrawer(); // Open the drawer
                 },
               ),
             ),
-            title: const Text('Products'),
+            elevation: 5,
             actions: [
               IconButton(
                 icon: Stack(
@@ -111,8 +112,8 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                 ),
                 onPressed: () {
                   // Navigate to the cart page
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => CartPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const CartScreen()));
                 },
               ),
             ],
@@ -210,16 +211,14 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                                         Text(
                                           'SAR ${dish.price ?? 'N/A'}',
                                           style: const TextStyle(
-                                            color: Colors.green,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Text(
                                           '${dish.calories ?? 'N/A'} calories',
                                           style: const TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12.0,
-                                          ),
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                         dish.imageUrl != null
                                             ? ClipRRect(
@@ -232,11 +231,12 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                                                   fit: BoxFit.cover,
                                                   errorBuilder: (context, error,
                                                       stackTrace) {
-                                                    return const Icon(
-                                                      Icons.broken_image,
-                                                      size: 50.0,
-                                                      color: Colors.grey,
-                                                    );
+                                                    return CachedNetworkImage(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        fit: BoxFit.cover,
+                                                        imageUrl:
+                                                            'https://hdwallpaperim.com/wp-content/uploads/2017/08/31/155931-food.jpg');
                                                   },
                                                 ),
                                               )
@@ -259,20 +259,11 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                             ],
                           ),
                           const SizedBox(height: 8.0),
-                          if (dish.customizationsAvailable ?? false)
-                            const Text(
-                              'Customizations Available',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 12.0,
-                              ),
-                            ),
-                          const SizedBox(height: 8.0),
                           Container(
                             width: MediaQuery.of(context).size.width * .30,
                             height: MediaQuery.of(context).size.width * .10,
                             decoration: BoxDecoration(
-                                color: Colors.lightGreen,
+                                color: Colors.green[800],
                                 borderRadius: BorderRadius.circular(20)),
                             child: Center(
                               child: Row(
@@ -312,6 +303,15 @@ class _ProductsPageState extends ConsumerState<ProductsPage>
                               ),
                             ),
                           ),
+                          const SizedBox(height: 8.0),
+                          if (dish.customizationsAvailable ?? false)
+                            const Text(
+                              'Customizations Available',
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 12.0,
+                              ),
+                            ),
                         ],
                       ),
                     ),

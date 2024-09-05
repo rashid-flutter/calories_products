@@ -3,18 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/controllers/providers/providers.dart';
 import 'package:food/models/product_model.dart';
 
-class CartPage extends ConsumerWidget {
+class CartScreen extends ConsumerWidget {
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cartState = ref.watch(cartProvider);
-    final AsyncValue<Products> products = ref.watch(productsProvider);
+    final AsyncValue<ProductModel> products = ref.watch(productsProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order Summary'),
+        title: const Text('Order Summary'),
+        elevation: 5,
       ),
       body: products.when(
-        loading: () => Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => Center(child: Text('Error: $error')),
         data: (products) {
           final addedDishes = products.categories!
@@ -185,8 +188,6 @@ class CartPage extends ConsumerWidget {
                                                 child: Text(
                                                   'INR ${dish.price}',
                                                   style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.green,
                                                     fontSize: 16.0,
                                                   ),
                                                 ),
@@ -200,7 +201,6 @@ class CartPage extends ConsumerWidget {
                                                 'INR ${(double.tryParse(dish.price ?? '0') ?? 0) * quantity}',
                                                 style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.green,
                                                 ),
                                               ),
                                               const Spacer(),
@@ -209,9 +209,9 @@ class CartPage extends ConsumerWidget {
                                           Text(
                                             '${dish.calories ?? 'N/A'} calories',
                                             style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12.0,
-                                            ),
+                                                color: Colors.black,
+                                                fontSize: 12.0,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ],
                                       ),
@@ -273,6 +273,7 @@ class CartPage extends ConsumerWidget {
                                 ref.read(cartProvider.notifier).clearCart();
 
                                 // Navigate to the homepage
+                                // ignore: use_build_context_synchronously
                                 Navigator.of(context)
                                     .popUntil((route) => route.isFirst);
                               },

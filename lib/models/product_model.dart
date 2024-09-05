@@ -1,9 +1,9 @@
-class Products {
+class ProductModel {
   List<Categories>? categories;
 
-  Products({this.categories});
+  ProductModel({this.categories});
 
-  Products.fromJson(Map<String, dynamic> json) {
+  ProductModel.fromJson(Map<String, dynamic> json) {
     if (json['categories'] != null) {
       categories = <Categories>[];
       json['categories'].forEach((v) {
